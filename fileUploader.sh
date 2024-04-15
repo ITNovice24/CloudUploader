@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Checks if AWS CLI config file is set
 check_aws_config_and_cred() {
     if [ -f ~/.aws/config ] && [ -f ~/.aws/credentials ]; 
     then
@@ -11,7 +12,7 @@ check_aws_config_and_cred() {
 }
 
 
-
+# Checks if the file exists or not. Will terminate program if it doesn't
 check_file () {
     local file_name="$1"
     if [ ! -e "$file_name" ]; then
@@ -23,6 +24,7 @@ check_file () {
     fi
 }
 
+# Sets AWS config & creds file if not already configured
 aws_config_set() {
 echo "Enter AWS acccess key ID:"
 read aws_access_key_id
@@ -36,6 +38,7 @@ read default_region
 echo "Enter AWS default output:"
 read default_output
 
+# Setting these as environment variables to make them persistent 
 export AWS_ACCESS_KEY_ID=$aws_access_key_id
 export AWS_SECRET_ACCESS_KEY_ID=$secret_access_key
 export AWS_DEFAULT_REGION=$default_region
@@ -48,6 +51,7 @@ aws configure set region "$default_region"
 aws configure set output "$default_output"
 }
 
+# Sends data to S3. Will overwrite data if filename is the same
 send_to_s3() {
     echo "What is your bucket's name?"
     read bucket_name
