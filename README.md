@@ -1,4 +1,4 @@
-# CloudUploader
+# CloudUploader v1
 This script will take a file and upload it to an AWS S3 bucket that you've created :facepunch:
 
 ## Pre-Reqs:
@@ -14,6 +14,9 @@ This script will take a file and upload it to an AWS S3 bucket that you've creat
 4. Run "fileUploader.sh /filepath" and the script will check if the file exists first. If the file exists, it will check your AWS config. If you AWS config is not set, you will be prompted to fill in your Access Key ID, Secret Key ID, Default Region, and Default Output. Feel free to hit enter for Default Output. 
 5. If the file doesn't exist or the filepath is wrong, the program will terminate.
 6. If upload successful, you will get a success message :white_check_mark:
+
+## Use Cases:
+1. Send .img, .png, .txt, etc or whatever file you want to an S3 bucket all from your CLI. If you're using an S3 for static webhosting, this is an easy way to get data to it.
 
 ## Diagram
 ![High Level Architecture](diagram.png)
